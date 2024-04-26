@@ -1,0 +1,37 @@
+name: Build and package Linux version
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-app:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install requirements
+        run: |
+          pip3 install pyinstaller
+          pip3 install -r requirements.txt
+          sudo apt install python3-tk
+
+      - name: Build
+        run: pyinstaller DIP.spec
+
+      - name: Log files
+        run: |
+          ls dist
+          ls dist/DIP
+          cd dist; zip -0 -r -y DIP.zip DIP
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.TOKEN }}
+          file: dist/DIP.zip
+          asset_name: DIP.zip
+          tag: latest-linux-build
+          overwrite: true

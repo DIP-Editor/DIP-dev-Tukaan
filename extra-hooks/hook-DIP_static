@@ -1,0 +1,4 @@
+# extra-hooks/hook-DIP_static.py
+from PyInstaller.utils.hooks import collect_data_files
+
+datas: list[tuple[str, str]] = collect_data_files("DIP.static")

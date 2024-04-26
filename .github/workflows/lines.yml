@@ -1,0 +1,16 @@
+name: Get the line count of the project
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  count-lines:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get Line Count
+        run: |
+          find . -name '*.py' | sed 's/.*/"&"/' | xargs  wc -l

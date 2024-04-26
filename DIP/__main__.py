@@ -1,6 +1,6 @@
-from tukaan import App, MainWindow, Button, Frame
+from tukaan import App, MainWindow
 
-if __name__ == "__main__":
+def main() -> None:
     root = App(name="DIP")
-    window = MainWindow(title="DIP")
+    window = MainWindow(title="DIP") #noqa: F841
     root.run()
