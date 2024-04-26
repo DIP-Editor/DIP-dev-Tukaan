@@ -27,7 +27,7 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
     pyz,
     a.scripts,
-    [],
+    [('O', None, 'OPTION')],
     exclude_binaries=True,
     name="DIP",
     debug=False,
