@@ -8,23 +8,19 @@ def main(no_loop: bool = False) -> None:
     root = App(name="DIP")
     window = MainWindow(title="DIP")  # noqa: F841
 
-
     # Get clam theme
-    if not system() in {"Darwin", "Windows"}:
-        root.theme = KolorScheme # type: ignore
-
+    if system() not in {"Darwin", "Windows"}:
+        root.theme = KolorScheme  # type: ignore
 
     # TODO: remove placeholder widget
     button = Button(window, text="Click Me!", tooltip="Placeholder Widget ;)")
     button.grid()
-
 
     # Resize Window
     width = Tcl.call(int, "winfo", "reqwidth", button)
     height = Tcl.call(int, "winfo", "reqheight", button)
     window.width = width
     window.height = height
-
 
     if not no_loop:
         root.run()
