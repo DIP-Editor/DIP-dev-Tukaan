@@ -1,1 +1,1 @@
-from .__main__ import main  # noqa: F401
+from .__main__ import main, DIPApp, DIPWindow  # noqa: F401
