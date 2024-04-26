@@ -45,11 +45,11 @@ jobs:
         run: |
           ls dist
           ls dist/DIP
-          mkdir DIP
+          mkdir DIP-packaging
 
       - name: Package app
         run: |
-          mv ./dist/DIP.app ./DIP/DIP.app
+          mv ./dist/DIP.app ./DIP-packaging/DIP.app
           brew install create-dmg
           test -f DIP.dmg && rm DIP.dmg
           create-dmg \
@@ -59,7 +59,7 @@ jobs:
             --app-drop-link 400 100 \
             --window-size 500 300 \
             "DIP.dmg" \
-            "DIP/"
+            "DIP-packaging/"
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
