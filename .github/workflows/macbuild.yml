@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-latest
     env:
       PYTHONVERSION: "3.11.0"
-      MACOSX_DEPLOYMENT_TARGET: "10.9"
+      MACOSX_DEPLOYMENT_TARGET: "12"
 
     steps:
       - uses: actions/checkout@v2
@@ -33,9 +33,10 @@ jobs:
       - name: Install Python dependencies and build
         run: |
           python3 --version
-          pip3 install --upgrade pip wheel
-          pip3 install -r requirements.txt
-          pip3 install pyinstaller
+          brew install pipx
+          pipx install --upgrade pip wheel
+          pipx install -r requirements.txt
+          pipx install pyinstaller
           python3 -O -m PyInstaller DIP.spec
 
       - name: Log files
