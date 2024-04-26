@@ -34,7 +34,6 @@ jobs:
         run: |
           python3 --version
           brew install pipx
-          pipx install --upgrade pip wheel
           pipx install -r requirements.txt
           pipx install pyinstaller
           python3 -O -m PyInstaller DIP.spec
