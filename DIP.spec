@@ -58,6 +58,6 @@ app = BUNDLE(
         "CFBundleShortVersionString": "1.0.0",
     },
     name="DIP.app",
-    icon="DIP_module/static/DIP.icns",
+    icon="DIP/static/DIP.icns",
     bundle_identifier="DIP",
 )
